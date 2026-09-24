@@ -1,4 +1,4 @@
-ocument.addEventListener("DOMContentLoaded", function () {
+﻿document.addEventListener("DOMContentLoaded", function () {
     fetch("https://countapi.mileshilliard.com/api/v1/hit/Drone")
         .then(response => response.json())
         .then(data => {
@@ -8,3 +8,4 @@ ocument.addEventListener("DOMContentLoaded", function () {
             document.getElementById("visitor-count").textContent = "unavailable";
         });
 });
+
