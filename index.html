@@ -101,6 +101,12 @@
     .contact-list{display:grid;gap:12px;align-content:center}
     .contact-list a{display:block;padding:13px 15px;background:#ffffff12;border:1px solid #ffffff35;border-radius:10px;color:#fff;text-decoration:none;overflow-wrap:anywhere}
     .contact-list a strong{display:block;color:#b9e3f2;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}
+    .drone-enquiry{display:grid;gap:12px;align-content:start}
+    .drone-enquiry label{display:block;font-weight:700;font-size:.9rem;color:#fff}
+    .drone-enquiry input,.drone-enquiry textarea{display:block;box-sizing:border-box;width:100%;margin-top:6px;padding:11px 12px;border:1px solid #496273;border-radius:9px;background:#fff;color:#102b3f;font:inherit}
+    .drone-enquiry textarea{min-height:110px;resize:vertical}
+    .drone-enquiry button{padding:13px 16px;border:0;border-radius:9px;background:#b9e3f2;color:#102b3f;font:inherit;font-weight:800;cursor:pointer}
+    #droneEnquiryResponse{color:#fff;overflow-wrap:anywhere;font-size:.92rem}
     footer{padding:24px 0;background:#0a1e2c;color:#cfdae0;font-size:.9rem}
     footer a{color:#d9edf5}
     .footer-row{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
@@ -224,16 +230,19 @@
       <h2 id="contact-title">Tell me what you need photographed</h2>
       <p>Based in the Chatham and Medway area, with enquiries welcomed from across Kent. Include the type of job, approximate location and your preferred timescale. I’ll reply to discuss whether it is suitable.</p>
       <p class="note" style="color:#c6dce7">No instant booking or price is implied. A job is only confirmed after the details and practical requirements have been agreed.</p>
-      <div class="actions">
-        <a class="btn" href="https://jasoncv.click/#contact-form" target="_blank" rel="noopener noreferrer">Use my main enquiry form</a>
+      <p class="note" style="color:#c6dce7">No booking or price is confirmed by submitting this form. I’ll reply to discuss your requirements.</p>
+      <div class="contact-list">
+        <a href="mailto:jasonmariakieran@gmail.com?subject=Jays%20Kent%20Drones%20enquiry"><strong>Email</strong>jasonmariakieran@gmail.com</a>
+        <a href="tel:+447306045705"><strong>Call</strong>07306 045705</a>
       </div>
-      <p class="note" style="color:#c6dce7">The enquiry form opens on my main website.</p>
     </div>
-    <div class="contact-list">
-      <a href="mailto:jasonmariakieran@gmail.com?subject=Jays%20Kent%20Drones%20enquiry"><strong>Email</strong>jasonmariakieran@gmail.com</a>
-      <a href="tel:+447306045705"><strong>Call</strong>07306 045705</a>
-      <a href="https://jasoncv.click/#contact-form" target="_blank" rel="noopener noreferrer"><strong>Alternative enquiry</strong>Open the contact form on jasoncv.click</a>
-    </div>
+    <form class="drone-enquiry" id="droneEnquiryForm">
+      <label for="droneEnquiryName">Your name<input id="droneEnquiryName" name="name" autocomplete="name" required></label>
+      <label for="droneEnquiryEmail">Your email<input id="droneEnquiryEmail" name="email" type="email" autocomplete="email" required></label>
+      <label for="droneEnquiryMessage">Tell me about the job<textarea id="droneEnquiryMessage" name="message" required placeholder="Type of photography, location and preferred timescale"></textarea></label>
+      <button type="submit">Send drone enquiry</button>
+      <div id="droneEnquiryResponse" role="status" aria-live="polite"></div>
+    </form>
   </section>
 </main>
 
@@ -245,5 +254,35 @@
 </footer>
 <script src="counter.js" defer></script>
 <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+
+<script>
+  document.getElementById("droneEnquiryForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const responseBox = document.getElementById("droneEnquiryResponse");
+    const data = new URLSearchParams();
+    data.append("name", document.getElementById("droneEnquiryName").value.trim());
+    data.append("email", document.getElementById("droneEnquiryEmail").value.trim());
+    data.append("message", "[Source: Jays Kent Drones website enquiry]\n" + document.getElementById("droneEnquiryMessage").value.trim());
+    responseBox.textContent = "Sending your enquiry...";
+    try {
+      const response = await fetch("https://8b3275icpc.execute-api.eu-west-2.amazonaws.com/dev/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: data
+      });
+      const text = await response.text();
+      if (response.ok) {
+        responseBox.textContent = text || "Thank you. Your enquiry has been submitted.";
+        form.reset();
+      } else {
+        responseBox.textContent = "Sorry, the enquiry could not be submitted. Please email jasonmariakieran@gmail.com instead.";
+      }
+    } catch (error) {
+      responseBox.textContent = "Sorry, the form could not connect. Please email jasonmariakieran@gmail.com instead.";
+    }
+  });
+</script>
+
 </body>
 </html>
