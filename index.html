@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jays Kent Drones - Professional Drone Photography in Kent and Medway</title>
@@ -27,7 +28,6 @@
     "addressRegion": "Kent",
     "addressCountry": "GB"
   },
-
   "serviceArea": ["Kent", "Medway"],
   "telephone": "07306045705",
   "email": "jasonmariakieran@gmail.com",
@@ -42,10 +42,7 @@
   "name": "Wedding Drone Photography",
   "description": "Professional aerial photography for weddings and special events",
   "areaServed": "Kent",
-  "provider": {
-    "@type": "LocalBusiness",
-    "name": "Jays Kent Drones"
-  }
+  "provider": {"@type": "LocalBusiness", "name": "Jays Kent Drones"}
 }
 </script>
 <script type="application/ld+json">
@@ -55,18 +52,21 @@
   "name": "Roof Inspection Drones",
   "description": "Professional roof damage assessment using drone aerial photography",
   "areaServed": "Kent",
-  "provider": {
-    "@type": "LocalBusiness",
-    "name": "Jays Kent Drones"
-  }
+  "provider": {"@type": "LocalBusiness", "name": "Jays Kent Drones"}
 }
 </script>
+<style>
+body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 1000px; margin: 0 auto; padding: 20px; color: #222; }
+img, video { max-width: 100%; height: auto; }
+label { display: block; margin-top: 12px; font-weight: 600; }
+input, select, textarea { box-sizing: border-box; width: 100%; max-width: 100%; padding: 10px; margin-top: 5px; font: inherit; }
+button, .book-button { display: inline-block; background: #d71920; color: white; padding: 12px 20px; border: 0; text-decoration: none; cursor: pointer; font: inherit; margin-top: 15px; }
+form { max-width: 650px; }
+.form-note { font-size: 0.9em; color: #555; }
+</style>
 </head>
-
 <body>
-
 <h1>Jays Kent Drones - Professional Drone Photography in Kent and Medway</h1>
-
 <p>Professional drone photography services specializing in wedding aerial imagery and property roof inspections throughout Kent and Medway. Serving residents and businesses in the Chatham area and surrounding regions with high-quality aerial photography solutions.</p>
 
 <h2>Drone Photography Services</h2>
@@ -78,21 +78,50 @@
 
 <img src="drone.jpg" alt="Drone over a large English estate wedding">
 <img src="download (35).jfif" alt="Drone aerial view of property for inspection">
-  <video width="1425" controls>
+
+<video width="1425" controls>
   <source src="mixdrone.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
-<p></p>
-<a href="mailto:jasonmariakieran@gmail.com" style="background:#ff0000;color:white;padding:10px 20px;text-decoration:none;">Book Now</a>
+
+<p><a class="book-button" href="mailto:jasonmariakieran@gmail.com">Book Now by Email</a></p>
+
+<h2>Send an Enquiry</h2>
+<p>Tell me a little about your wedding, roof inspection or other drone photography project and I'll get back to you.</p>
+<form action="https://formsubmit.co/jasonmariakieran@gmail.com" method="POST">
+  <input type="hidden" name="_subject" value="New enquiry from Jays Kent Drones website">
+  <input type="hidden" name="_template" value="table">
+  <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+  <label for="name">Your name *</label>
+  <input id="name" name="name" type="text" autocomplete="name" required>
+  <label for="email">Your email address *</label>
+  <input id="email" name="email" type="email" autocomplete="email" required>
+  <label for="service">What do you need? *</label>
+  <select id="service" name="service" required>
+    <option value="">Please choose a service</option>
+    <option>Wedding drone photography</option>
+    <option>Roof inspection</option>
+    <option>Property or land photography</option>
+    <option>Other drone photography</option>
+  </select>
+  <label for="location">Location of the job</label>
+  <input id="location" name="location" type="text" autocomplete="address-level2" placeholder="Town or area">
+  <label for="date">Preferred date (if known)</label>
+  <input id="date" name="preferred_date" type="date">
+  <label for="message">Tell me about the job *</label>
+  <textarea id="message" name="message" rows="5" required placeholder="A few details about what you have in mind"></textarea>
+  <p class="form-note">Your details will be used to respond to this enquiry. Please don't include sensitive personal information.</p>
+  <button type="submit">Send Enquiry</button>
+</form>
 
 <h2>Visitors</h2>
-<p>Visitors: <span id="visitor-count">loadingâ€¦</span></p>
+<p>Visitors: <span id="visitor-count">loading…</span></p>
 
 <h2>Contact</h2>
-<p>Email: jasonmariakieran@gmail.com</p>
+<p>Email: <a href="mailto:jasonmariakieran@gmail.com">jasonmariakieran@gmail.com</a></p>
 <p><strong>About the Pilot:</strong> Jason Harvey is also an AWS Cloud Engineer and IT specialist with 10+ years experience in cloud infrastructure, automation, and customer-focused technical support. View his professional CV at <a href="https://jasoncv.click" target="_blank" rel="noopener noreferrer">jasoncv.click</a>.</p>
-<p>telephone number 07306045705</p>
-<p></p>
+<p>Telephone number: <a href="tel:+447306045705">07306045705</a></p>
+
 <video width="1420" height="800" controls>
   <source src="jaydroneservices2.mp4" type="video/mp4">
   Your browser does not support the video tag.
